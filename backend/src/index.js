@@ -6,12 +6,16 @@ import {connectDB} from "../lib/db.js"
 dotenv.config();
 const app  = express();
 
+const PORT = process.env.PORT;
+
+
+//allows you to use json data and allow grabbing the json data
+app.use(express.json());
 
 
 app.use("/api/auth", authRoutes);
 
 
-const PORT = process.env.PORT;
 
 
 app.listen(PORT, ()=>{

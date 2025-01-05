@@ -2,33 +2,30 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
-        email : String,
-        requried: true,
-        unique: true
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        password: {
+            type: String,
+            required: true,
+            minlength: 6
+        },
+        fullName: {
+            type: String,
+            required: true
+        },
+        profilePic: {
+            type: String,
+            default: ""
+        }
     },
     {
-        password : String,
-        requried: true,
-        minlength: 6,
-    },
-    {
-        fullName : String,
-        requried: true,
-    },
-    {
-        profilePic : String,
-        requried: true,
-        default: ""
-    },
-    {
-        timestamps:true
+        timestamps: true // Adds createdAt and updatedAt fields automatically
     }
 );
 
-
-
-
 const User = mongoose.model("User", userSchema);
-
 
 export default User;
