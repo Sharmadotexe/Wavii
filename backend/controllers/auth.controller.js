@@ -68,8 +68,42 @@ export const signup = async (req,res) =>{
 };
 
 
-export const login =  (req,res) =>{
-    res.send("login route")
+export const login = async (req,res) =>{
+
+    //get the email and password
+    const{email, password} = req.body;
+
+    try {
+
+        const user = await User.findOne({email}) //finding user 
+
+        if(!user){ //if email is incorrect
+            return res.status(400).json({message:"Invalid Credentials"});
+        }
+
+        //for matching password 
+        // user.password is saved in db
+       const isPasswordCorrect =  await bcrypt.compare(password,user.password);
+
+        if(!isPasswordCorrect){
+            return res.status(400).json({message:"Invalid Credentials"});
+        }
+
+        //else we will genreate token 
+
+        generateToken(user._id,res);
+
+        res.status(200).json({
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            profilePic: user.profilePic,
+        })
+        
+    } catch (error) {
+        console.log("Error in signup controller ", error.message);
+        res.status(500).json({message: "INTERNAL SERVICE ERROR"});
+    }
 };
 
 
