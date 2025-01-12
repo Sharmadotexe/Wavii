@@ -111,3 +111,12 @@ export const logout =  (req,res) =>{
     res.send("logout route")
 };
 
+
+export const updateProfile = async (req,res) =>{
+    try {
+        
+    } catch (error) {
+        
+    }
+};
+
