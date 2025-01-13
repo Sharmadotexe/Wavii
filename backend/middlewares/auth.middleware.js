@@ -3,7 +3,7 @@ import User from '../models/user.model.js';
 
 
 
-export const protectRoute = async (req,res)=>{
+export const protectRoute = async (req,res,next)=>{
     try {
         const token = req.cookies.jwt;   //grabbing jwt token to check if we have it or not for validating, we need cookie parser package for grabbing so import it in index.js file
 
