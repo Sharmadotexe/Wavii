@@ -12,6 +12,7 @@ import LoginInPage from "./pages/LogInPage"
 
 import {Loader} from "lucide-react";
 import {Toaster} from "react-hot-toast";
+import { useThemeStore } from './store/useThemeStore'
 
 
 
@@ -20,6 +21,7 @@ import {Toaster} from "react-hot-toast";
 
 const App = () => {
   const {authUser, checkAuth ,isCheckingAuth} = useAuthStore();
+  const {theme} = useThemeStore();
 
   useEffect(()=>{
     checkAuth();
@@ -38,7 +40,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div data-theme={theme}>
 
       <Navbar></Navbar>
       <Routes>
