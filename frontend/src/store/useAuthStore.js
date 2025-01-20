@@ -9,7 +9,7 @@ export const useAuthStore = create((set) =>({
     isSigningUp:false,
     isLoggingIn:false,
     isUpdatingProfile:false,
-
+    onlineUsers: [],
     isCheckingAuth:true,
 
     checkAuth: async()=>{ //trying to req the endpoint in backend /check route
