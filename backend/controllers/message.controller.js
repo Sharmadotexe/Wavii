@@ -40,7 +40,7 @@ export const getMessages =  async (req,res) =>{
 
     } catch (error) {
          console.log("Error in getMessages", error.message);
-         res.status(500).json({message: "INTERNAL SERVICE ERROR"});
+         res.status(500).json({error: "INTERNAL SERVICE ERROR"});
     }
 };
 
