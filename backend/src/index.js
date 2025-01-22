@@ -5,11 +5,14 @@ import messageRoutes from "../routes/message.routes.js";
 import {connectDB} from "../lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import {app, server} from "../lib/socket.js"
 
 
 
 dotenv.config();
-const app  = express();
+
+
+// const app  = express();// will delete after creating app in socket io file
 
 const PORT = process.env.PORT;
 
@@ -33,7 +36,7 @@ app.use("/api/messages", messageRoutes);
 
 
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
 console.log("server is running on port :" +PORT);
 connectDB()
 });
